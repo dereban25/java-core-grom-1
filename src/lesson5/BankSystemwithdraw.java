@@ -4,7 +4,7 @@ package lesson5;
  * Created by vaha on 29.05.2017.
  */
 public class BankSystemwithdraw {
-
+//i tut test
 
     /*Вернемся к примеру с клиентами и счетами. Напишите метод, который будет снимать деньги со счета определенного клиента и возвращать остаток на счете.
     Если денег на счете недостаточно метод будет возвращать -1 Сигнатура метода - withdraw(String[] clients, int[] balances, String client, int amount) Метод должен содержаться в классе.
