@@ -7,6 +7,7 @@ package lesson5;
  */
 public class UniqueCountDz {
 
+    // test commit
 
     public static int uniqueCount(int[] array) {
 
