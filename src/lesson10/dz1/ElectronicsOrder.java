@@ -17,7 +17,26 @@ public class ElectronicsOrder extends Order {
     @Override
     public void validateOrder() {
 
-        if ((getCustomerOwned().getCity().equals("Киев")) || (getCustomerOwned().getCity().equals("Одесса")) || (getCustomerOwned().getCity().equals("Днепр")) || (getCustomerOwned().getCity().equals("Харьков")) && (getShipToCity().equals("Киев") || getShipToCity().equals("Одесса") || getShipToCity().equals("Днепр") || getShipToCity().equals("Харьков")) && getTotalPrice() >= 100 && getCustomerOwned().getGender().equals("Женский")) {
+
+        String[] ordercityListFrom = {"Киев", "Одесса", "Днепр", "Харьков"};
+        String[] ordercityListTo = {"Киев", "Одесса", "Днепр", "Харьков"};
+        boolean cityCheck = false;
+
+        for (int i = 0; i < ordercityListFrom.length; i++) {
+            if (getCustomerOwned().getCity().equals(ordercityListFrom[i])) {
+
+                for (int j = 0; j < ordercityListTo.length; j++) {
+
+                    if (getShipToCity().equals(ordercityListTo[j])) {
+                        cityCheck = true;
+
+                    }
+                }
+            }
+
+        }
+
+        if (cityCheck == true && getBasePrice() > 100 && getCustomerOwned().getGender() == "Женский") {
             setDateConfirmed(new Date());
         }
 
@@ -26,18 +45,18 @@ public class ElectronicsOrder extends Order {
 
     @Override
     public void calculatePrice() {
-        double comission = 15;
+        double comission = 0.15;
 
-        if ((getShipToCity().equals("Киев")) || (getShipToCity().equals("Одесса"))) {
-            comission = 10;
+        if (getShipToCity().equals("Киев") || getShipToCity().equals("Одесса")) {
+            comission = 0.10;
         }
 
 
-        double totalPrice = +getBasePrice() + ((getBasePrice() * comission) / 100);
-        if (totalPrice > 1000) {
-            totalPrice = -(totalPrice * 5) / 100;
+        setTotalPrice(getBasePrice() + (getBasePrice() * comission));
+        if (getTotalPrice() > 1000) {
+            setTotalPrice(getTotalPrice() - (getTotalPrice() * 0.05));
         }
-        setTotalPrice(totalPrice);
+
 
     }
 

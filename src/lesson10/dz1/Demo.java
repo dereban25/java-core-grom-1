@@ -9,7 +9,7 @@ public class Demo {
 
     public static void main(String[] args) {
 
-        ElectronicsOrder electronicsOrder1 = new ElectronicsOrder("Телефон",new Date(),"Одесса",100,new Customer("Аня","Киев","Женский"), 24);
+        ElectronicsOrder electronicsOrder1 = new ElectronicsOrder("Телефон",new Date(),"Одесса",10000,new Customer("Аня","Киев","Женский"), 24);
         ElectronicsOrder electronicsOrder2 = new ElectronicsOrder("Гитара",new Date(),"Херсон",100,new Customer("Петя","Киев","Мужской"),12);
 
 
@@ -63,6 +63,9 @@ public class Demo {
         System.out.println(furnitureOrder2.getDateConfirmed() + " Дата подтверждения ");
         System.out.println(furnitureOrder2.getDateShipped() + " Дата отправки ");
 
+
+        int a = 10;
+        System.out.println( a += 20);
 
     }
 }

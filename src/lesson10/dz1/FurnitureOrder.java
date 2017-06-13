@@ -19,7 +19,15 @@ public class FurnitureOrder extends Order {
     public void validateOrder() {
 
 
-        if ((getCustomerOwned().getCity().equals("Киев") || getCustomerOwned().getCity().equals("Львов")) && getTotalPrice() >= 500 && (!getCustomerOwned().getName().equals("Тест"))) {
+        String[] validCity = {"Киев", "Львов"};
+        for (int i = 0; i < validCity.length; i++) {
+            if (validCity[i] == getCustomerOwned().getCity() && getBasePrice() > 500 && getCustomerOwned().getName() != "Тест") {
+                setDateConfirmed(new Date());
+            }
+        }
+
+
+        if ((getCustomerOwned().getCity() == "Киев" || getCustomerOwned().getCity() == "Львов") && getBasePrice() > 500 && getCustomerOwned().getName() != "Тест") {
             setDateConfirmed(new Date());
         }
 
